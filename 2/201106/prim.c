@@ -1,3 +1,9 @@
+/*
+	프로그램명: Prim 최소 비용 신장 트리
+	작성일: 2020년 11월 6일(금)
+	학번: 20184014
+	이름: 이승준
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,7 +15,7 @@
 
 int weight[MAX_VERTICES][MAX_VERTICES];
 int selected[MAX_VERTICES];
-int dist[MAX_VERTICES];
+int distance[MAX_VERTICES];
 
 int get_min_vertex(int n)
 {
@@ -22,7 +28,7 @@ int get_min_vertex(int n)
 		}
 
 	for (i=0; i<n; ++i)
-		if (!selected[i] && (dist[i] > dist[v]))
+		if (!selected[i] && (distance[i] < distance[v]))
 			v = i;
 
 	return v;
@@ -30,7 +36,22 @@ int get_min_vertex(int n)
 
 void prim(int s, int n)
 {
-	// homework
+	int i, u, v;
+
+	for (u = 0; u<n; ++u)
+		distance[u] = INF;
+	distance[s] = 0;
+	for (i=0; i<n; ++i) {
+		u = get_min_vertex(n);
+		selected[u] = TRUE;
+		if (distance[u] == INF) return;
+		printf("정점 %d 추가\n", u);
+		for (v=0; v<n; ++v)
+			if (weight[u][v] != INF)
+				if (!selected[v] && (weight[u][v] < distance[v])) {
+					distance[v] = weight[u][v];
+				}
+	}
 }
 
 int main()

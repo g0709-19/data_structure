@@ -8,7 +8,7 @@
 
 #define MAX_VERTICES	100
 
-* union find 에서 사용하는 코드 */
+/* union find 에서 사용하는 코드 */
 int parent[MAX_VERTICES];
 int num[MAX_VERTICES];
 
@@ -48,7 +48,7 @@ int set_union(int s1, int s2)
 	}
 }
 
-* min heap tree 를 위한 코드 */
+/* min heap tree 를 위한 코드 */
 typedef struct {
 	int key;		// weight
 	int u;			// from node
@@ -85,7 +85,7 @@ void insert_min_heap(HeapType *h, element item)
 
 element delete_min_heap(HeapType *h){	int parent, child;	element item, temp;	item = h->heap[1];	temp = h->heap[(h->heap_size)--];	parent = 1;	child = 2;	while (child <= h->heap_size)	{		if ((child < h->heap_size) && (h->heap[child].key) > h->heap[child + 1].key)			++child;		if (temp.key <= h->heap[child].key)			break;		h->heap[parent] = h->heap[child];		parent = child;		child *= 2;	}	h->heap[parent] = temp;	return item;}
 
-* kruskal 알고리즘 */
+/* kruskal 알고리즘 */
 
 void insert_heap_edge(HeapType *h, int u, int v, int weight)
 {

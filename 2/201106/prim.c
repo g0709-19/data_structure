@@ -45,7 +45,7 @@ void prim(int s, int n)
 		u = get_min_vertex(n);
 		selected[u] = TRUE;
 		if (distance[u] == INF) return;
-		printf("정점 %d 추가\n", u);
+		printf("%d ", u);
 		for (v=0; v<n; ++v)
 			if (weight[u][v] != INF)
 				if (!selected[v] && (weight[u][v] < distance[v])) {
@@ -92,6 +92,7 @@ int main()
 	}
 
 	prim(0, max);
+	printf("\n");
 
 	fclose(fp);
 	return 0;
